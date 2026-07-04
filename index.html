@@ -505,7 +505,93 @@
          <div class="footer-text">© 2026 ابشر سكاي لخدمات الصيانة. جميع الحقوق محفوظة.</div>
       </div>
    </section>
+<!-- ================= بداية قسم معالم عدن المتناسق مع هويتك ================= -->
+<style>
+    .aden-history-widget {
+        position: fixed;
+        top: 90px; /* ليكون أسفل القائمة العلوية لموقعك */
+        right: 20px;
+        width: 320px;
+        background: var(--bg-card); /* يطابق خلفية بطاقات موقعك */
+        backdrop-filter: blur(10px); /* تأثير زجاجي ناعم */
+        color: var(--text-main);
+        border-right: 5px solid var(--primary-blue); /* الخط الجانبي باللون الأزرق الأساسي لأبشر سكاي */
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        font-family: 'Cairo', sans-serif; /* يطابق خط موقعك الحلي */
+        direction: rtl;
+        text-align: right;
+        padding: 18px;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .aden-widget-header {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        color: var(--neon-blue); /* العنوان بلون النيون الأزرق المميز لموقعك */
+    }
+    .aden-icon-spin {
+        display: inline-block;
+        margin-left: 8px;
+        color: var(--neon-blue);
+        animation: spin-slow 5s linear infinite;
+    }
+    @keyframes spin-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    #aden-monument-text {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        min-height: 75px;
+        transition: opacity 0.5s ease-in-out;
+    }
+    #aden-monument-text strong {
+        color: var(--neon-blue);
+        font-weight: 600;
+    }
+</style>
 
+<div class="aden-history-widget" id="adenWidget">
+    <div class="aden-widget-header">
+        <span class="aden-icon-spin">⚓</span>
+        <span>من معالم وتاريخ عدن</span>
+    </div>
+    <div id="aden-monument-text">جاري تحميل العمارة والتاريخ...</div>
+</div>
+
+<script>
+    const adenMonuments = [
+        "<strong>صهاريج عدن:</strong> معجزة هندسية فريدة في قلب كريتر، شُيدت لتلقي وحفظ مياه الأمطار عبر وديان جبل شمسان وتعود لقرون طويلة قبل الميلاد.",
+        "<strong>قلعة صيرة:</strong> الحصن الدفاعي التاريخي الشامخ فوق جزيرة صيرة، والذي وقف حارساً لثغر عدن الباسم وصد هجمات الغزاة عبر العصور.",
+        "<strong>منارة عدن:</strong> مَعلَم معمارى أثري بارز يُعتقد أنها مئذنة لجامع قديم تهدم، وتتميز بتصميمها المثمن الذي يعكس عراقة العمارة الإسلامية.",
+        "<strong>ساعة بيغ بن عدن:</strong> بُنيت في التواهي عام 1890 لتكون شبيهة بساعة لندن الشهيرة، وتعتبر من أقدم الساعات التاريخية في المنطقة.",
+        "<strong>ميناء التواهي:</strong> تمتلك عدن واحداً من أفضل الموانئ الطبيعية في العالم، وشواطئ ساحرة تروي قصة المدينة كملتقى للتجارة العالمية."
+    ];
+
+    let adenIndex = 0;
+    const textElement = document.getElementById("aden-monument-text");
+
+    function rotateAdenHistory() {
+        textElement.style.opacity = 0;
+        setTimeout(function() {
+            textElement.innerHTML = adenMonuments[adenIndex];
+            textElement.style.opacity = 1;
+            adenIndex = (adenIndex + 1) % adenMonuments.length;
+        }, 500);
+    }
+
+    rotateAdenHistory();
+    setInterval(rotateAdenHistory, 8000);
+</script>
+<!-- ================= نهاية قسم معالم عدن المتناسق مع هويتك ================= -->
 </body>
 
 </html>
