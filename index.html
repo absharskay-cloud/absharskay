@@ -431,6 +431,109 @@
             <div class="footer-text">© 2026 ابشر سكاي لخدمات الصيانة. جميع الحقوق محفوظة.</div>
         </div>
     </section>
+<!-- ================= بداية قسم الإعلانات والترويج لشركة أبشر سكاي ================= -->
+<style>
+    .absher-promo-widget {
+        position: fixed;
+        top: 90px; /* ليكون أسفل القائمة العلوية لموقعك */
+        right: 20px;
+        width: 320px;
+        background: var(--bg-card); /* يطابق خلفية بطاقات موقعك */
+        backdrop-filter: blur(10px); /* تأثير زجاجي ناعم */
+        -webkit-backdrop-filter: blur(10px);
+        color: var(--text-main);
+        border-right: 5px solid var(--primary-blue); /* الخط الجانبي باللون الأزرق الأساسي لأبشر سكاي */
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        font-family: 'Cairo', sans-serif; /* يطابق خط موقعك */
+        direction: rtl;
+        text-align: right;
+        padding: 18px;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .absher-widget-header {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        color: var(--neon-blue); /* العنوان بلون النيون الأزرق المميز لموقعك */
+    }
+    .absher-icon-bounce {
+        display: inline-block;
+        margin-left: 8px;
+        color: var(--neon-blue);
+        animation: bounce-slow 2s infinite;
+    }
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+    #absher-promo-text {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        min-height: 80px; /* طول متناسق ومناسب للنصوص */
+        transition: opacity 0.5s ease-in-out;
+    }
+    #absher-promo-text strong {
+        color: var(--neon-blue);
+        font-weight: 600;
+    }
 
+    /* التجاوب مع شاشات الجوال */
+    @media (max-width: 992px) {
+        .absher-promo-widget {
+            position: relative;
+            top: 0;
+            right: 0;
+            width: 84%;
+            margin: 20px auto;
+            z-index: 10;
+        }
+    }
+</style>
+
+<div class="absher-promo-widget" id="absherPromoWidget">
+    <div class="absher-widget-header">
+        <span class="absher-icon-bounce">📢</span>
+        <span>آخر الأخبار والعروض</span>
+    </div>
+    <div id="absher-promo-text">جاري تحميل المستجدات...</div>
+</div>
+
+<script>
+    // مصفوفة الأخبار والعناوين الترويجية المخصصة بناءً على طلبك
+    const absherPromos = [
+        "<strong>رؤية ريادية:</strong> بتوجيهات من رئيس مجلس إدارة أبشر سكاي الأستاذ <strong>جمال جميل شمسان</strong>، نسير بخطى ثابتة نحو تطوير البنية التحتية لخدمات الصيانة والابتكار الرقمي.",
+        "<strong>قريباً ومجاناً:</strong> إطلاق تطبيق <strong>أبشر سكاي لخدمات الصيانة</strong> المطور كلياً على نظامي <strong>أندرويد و آيفون (iOS)</strong> لطلب خدماتك بلمسة زر.",
+        "<strong>حدث فريد في العاصمة:</strong> ترقبوا إطلاق عروض الباقات السنوية والشهرية الحصرية <strong>لأول مرة في عدن</strong>، حلول صيانة متكاملة تناسب كل منزل ومنشأة.",
+        "<strong>جودة وضمان:</strong> نوفر لك خدمات التكييف، التبريد، والأنظمة التقنية بأيدي خبراء ومهندسين متخصصين لضمان راحة بالك المستمرة."
+    ];
+
+    let promoIndex = 0;
+    const promoTextElement = document.getElementById("absher-promo-text");
+
+    function rotateAbsherPromos() {
+        if (!promoTextElement) return;
+        
+        promoTextElement.style.opacity = 0;
+        setTimeout(function() {
+            promoTextElement.innerHTML = absPromos[promoIndex]; // ستقرأ المصفوفة بشكل صحيح
+            promoTextElement.innerHTML = absherPromos[promoIndex];
+            promoTextElement.style.opacity = 1;
+            promoIndex = (promoIndex + 1) % absherPromos.length;
+        }, 500);
+    }
+
+    // التشغيل التلقائي فورا ثم التدوير كل 8 ثوانٍ
+    rotateAbsherPromos();
+    setInterval(rotateAbsherPromos, 8000);
+</script>
+<!-- ================= نهاية قسم الإعلانات والترويج لشركة أبشر سكاي ================= -->
 </body>
 </html>
