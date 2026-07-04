@@ -337,6 +337,56 @@
          margin-top: 40px;
       }
 
+      /* تنسيقات الـ Widget الجانبي لمعالم عدن */
+      .aden-history-widget {
+         position: fixed;
+         top: 95px;
+         left: 25px; /* تم تعديله لليسار ليتوازن بصرياً مع زر الواتساب بالأسفل ويترك لليمين مساحة التصفح */
+         width: 300px;
+         background: var(--bg-card);
+         backdrop-filter: blur(12px);
+         -webkit-backdrop-filter: blur(12px);
+         color: var(--text-main);
+         border-right: 4px solid var(--primary-blue);
+         border-radius: 16px;
+         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+         direction: rtl;
+         text-align: right;
+         padding: 18px;
+         z-index: 99;
+         transition: all 0.3s ease;
+         border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .aden-widget-header {
+         display: flex;
+         align-items: center;
+         font-weight: bold;
+         font-size: 15px;
+         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+         padding-bottom: 10px;
+         margin-bottom: 12px;
+         color: var(--neon-blue);
+      }
+
+      .aden-widget-header i {
+         margin-left: 8px;
+         color: var(--neon-blue);
+      }
+
+      #aden-monument-text {
+         font-size: 14px;
+         line-height: 1.7;
+         color: var(--text-muted);
+         min-height: 50px;
+         transition: opacity 0.5s ease-in-out;
+         opacity: 1;
+      }
+
+      #aden-monument-text.fade-hidden {
+         opacity: 0;
+      }
+
       /* التوافق التام مع الجوال وتغيير التوزيع */
       @media (max-width: 992px) {
          .section-content {
@@ -363,6 +413,11 @@
 
          .plans-grid {
             justify-content: center;
+         }
+
+         /* إخفاء الـ Widget في الجوالات الصغيرة لضمان تجربة مستخدم مريحة وعدم حجب المحتوى */
+         .aden-history-widget {
+            display: none;
          }
       }
    </style>
@@ -451,116 +506,5 @@
                   <g transform="translate(40, 20)">
                      <path d="M70 390 C65 310 95 240 115 170 L110 50 L145 125 H175 L200 50 L205 150 C220 230 240 310 230 390 C180 400 120 400 70 390 Z" fill="#080a0f" />
                      <path d="M115 170 L110 50 L145 125 H175 L200 50 L205 160" fill="none" stroke="#00d2ff" stroke-width="2.5" filter="url(#cat-neon)" stroke-linecap="round" />
-                     <path d="M125 185 Q140 170 150 190 Q135 195 125 185 Z" fill="none" stroke="#00d2ff" stroke-width="1.5" filter="url(#cat-neon)" />
-                     <path d="M132 182 Q140 176 144 186 Z" fill="#00d2ff" filter="url(#cat-neon)" />
-                     <path d="M205 160 C222 240 232 320 225 380" fill="none" stroke="#0071e3" stroke-width="2" opacity="0.7" />
-                  </g>
-               </svg>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <section>
-      <div class="section-content" style="flex-direction: column; align-items: flex-start;">
-         <h2 class="hero-title" style="font-size: 38px;">باقات <span>الاشتراك السنوي الذكي</span></h2>
-         <div class="plans-grid">
-            <div class="plan-box">
-               <h3>الباقة الأساسية</h3>
-               <div class="price">خطة اقتصادية</div>
-               <ul>
-                  <li><i class="fa-solid fa-check"></i> 4 زيارات صيانة وقائية مجدولة</li>
-                  <li><i class="fa-solid fa-check"></i> فحص شامل لشبكات الكهرباء والسباكة</li>
-                  <li><i class="fa-solid fa-check"></i> دعم فني واستشارات مجانية عبر الهاتف</li>
-               </ul>
-            </div>
-            <div class="plan-box featured">
-               <h3>الباقة المتقدمة</h3>
-               <div class="price">تغطية بريميوم</div>
-               <ul>
-                  <li><i class="fa-solid fa-check"></i> زيارات صيانة طارئة ودورية غير محدودة</li>
-                  <li><i class="fa-solid fa-check"></i> غسيل وصيانة أجهزة التكييف بالكامل</li>
-                  <li><i class="fa-solid fa-check"></i> أولوية مطلقة في الاستجابة للطوارئ 24/7</li>
-               </ul>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <section style="min-height: auto; padding-bottom: 30px;">
-      <div class="section-content" style="flex-direction: column;">
-         <h2 class="hero-title" style="font-size: 36px; margin-bottom: 15px;">تواصل <span>معنا الآن</span></h2>
-         <div class="info-layout">
-            <div class="info-card" style="text-align: right;">
-               <h3><i class="fa-solid fa-map-location-dot" style="color:var(--neon-blue);"></i> العنوان والموقع</h3>
-               <p><i class="fa-solid fa-location-dot"></i> عدن - مديرية المعلا - خلف مطعم حلب</p>
-               <p><i class="fa-solid fa-building"></i> بجانب مداد للطباعة الإعلانية</p>
-            </div>
-            <div class="info-card" style="text-align: right;">
-               <h3><i class="fa-solid fa-clock" style="color:var(--neon-blue);"></i> مواعيد العمل الرسمية</h3>
-               <p><i class="fa-solid fa-sun"></i> <strong>الفترة الصباحية:</strong> <span class="badge">8:00 ص إلى 12:00 ظهراً</span></p>
-               <p><i class="fa-solid fa-moon"></i> <strong>الفترة المسائية:</strong> <span class="badge">4:00 م إلى 8:00 مساءً</span></p>
-            </div>
-         </div>
-         <div class="footer-text">© 2026 ابشر سكاي لخدمات الصيانة. جميع الحقوق محفوظة.</div>
-      </div>
-   </section>
-<!-- ================= بداية قسم معالم عدن المتناسق مع هويتك ================= -->
-<style>
-    .aden-history-widget {
-        position: fixed;
-        top: 90px; /* ليكون أسفل القائمة العلوية لموقعك */
-        right: 20px;
-        width: 320px;
-        background: var(--bg-card); /* يطابق خلفية بطاقات موقعك */
-        backdrop-filter: blur(10px); /* تأثير زجاجي ناعم */
-        color: var(--text-main);
-        border-right: 5px solid var(--primary-blue); /* الخط الجانبي باللون الأزرق الأساسي لأبشر سكاي */
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        font-family: 'Cairo', sans-serif; /* يطابق خط موقعك الحلي */
-        direction: rtl;
-        text-align: right;
-        padding: 18px;
-        z-index: 9999;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .aden-widget-header {
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 10px;
-        margin-bottom: 12px;
-        color: var(--neon-blue); /* العنوان بلون النيون الأزرق المميز لموقعك */
-    }
-    .aden-icon-spin {
-        display: inline-block;
-        margin-left: 8px;
-        color: var(--neon-blue);
-        animation: spin-slow 5s linear infinite;
-    }
-    @keyframes spin-slow {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    #aden-monument-text {
-        font-size: 14px;
-        line-height: 1.7;
-        color: var(--text-muted);
-        min-height: 75px;
-        transition: opacity 0.5s ease-in-out;
-    }
-    #aden-monument-text strong {
-        color: var(--neon-blue);
-        font-weight: 600;
-    }
-</style>
-
-<div class="aden-history-widget" id="adenWidget">
-    <div class="aden-widget-header">
-       
-
+                     <path d="M125 185 Q140 170 150 190 Q135 195 125 185 Z" fill="none" stroke="#00d2ff" stroke-width="1.5" filter="url(#cat-neon)"
 </html>
