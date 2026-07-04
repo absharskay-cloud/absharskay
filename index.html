@@ -431,6 +431,279 @@
             <div class="footer-text">© 2026 ابشر سكاي لخدمات الصيانة. جميع الحقوق محفوظة.</div>
         </div>
     </section>
+<!-- ================= بداية منصة أبشر سكاي الترويجية الاحترافية المتقدمة ================= -->
+<style>
+    /* الحاوية الرئيسية بتصميم زجاجي مستقبلي متوهج */
+    .absher-premium-widget {
+        position: fixed;
+        top: 100px;
+        right: 25px;
+        width: 330px;
+        background: rgba(20, 24, 33, 0.75); /* خلفية داكنة مدمجة مع نظام موقعك بالتأثير الزجاجي */
+        backdrop-filter: blur(15px) saturate(160%);
+        -webkit-backdrop-filter: blur(15px) saturate(160%);
+        color: var(--text-main);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-right: 5px solid var(--primary-blue); /* الخط الجانبي بلون أبشر سكاي الرسمي */
+        border-radius: 16px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 
+                    0 0 15px rgba(0, 227, 255, 0.1); /* توهج خلفي ناعم */
+        font-family: 'Cairo', sans-serif;
+        direction: rtl;
+        text-align: right;
+        padding: 20px;
+        z-index: 9999;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+    }
 
+    .absher-premium-widget:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
+                    0 0 25px rgba(0, 227, 255, 0.25);
+        border-color: rgba(0, 227, 255, 0.3);
+    }
+
+    /* الهيدر الاحترافي مع الإشعار المتحرك */
+    .absher-premium-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+        color: var(--neon-blue); /* لون النيون الأزرق المعتمد في الهوية */
+        letter-spacing: 0.5px;
+    }
+
+    .absher-header-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* النبضة الضوئية المتحركة للإعلانات الحية */
+    .absher-live-pulse {
+        width: 8px;
+        height: 8px;
+        background-color: #ff3b30;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7);
+        animation: absherPulse 1.6s infinite;
+    }
+
+    @keyframes absherPulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 59, 48, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+    }
+
+    /* منطقة عرض النصوص بحركة ثلاثية الأبعاد سلسة */
+    .absher-premium-body {
+        min-height: 95px;
+        position: relative;
+    }
+
+    #absher-premium-text {
+        font-size: 13.5px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        transition: all 0.4s ease-in-out;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* كلاسات الأنيميشن أثناء الانتقال */
+    #absher-premium-text.fade-out {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    #absher-premium-text.fade-in {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    #absher-premium-text strong {
+        color: var(--neon-blue);
+        font-weight: 700;
+    }
+
+    /* شريط المعاينة والتقدم الزمني الأسفل (كل 5 ثوانٍ) */
+    .absher-premium-footer {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* النقاط السفلية الذكية */
+    .absher-dot-indicators {
+        display: flex;
+        gap: 5px;
+    }
+
+    .absher-dot {
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .absher-dot.active {
+        background: var(--neon-blue);
+        width: 14px;
+        border-radius: 4px;
+    }
+
+    /* خط التقدم الزمني النيون (يقفل الدائرة كل 5 ثوانٍ) */
+    .absher-progress-container {
+        width: 60px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .absher-progress-bar {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-blue), var(--neon-blue));
+        transform-origin: right;
+        transform: scaleX(0);
+    }
+
+    /* دعم التجاوب الكامل والشاشات الصغيرة (الجوال) */
+    @media (max-width: 992px) {
+        .absher-premium-widget {
+            position: relative;
+            top: 0;
+            right: 0;
+            width: 88%;
+            margin: 30px auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+    }
+</style>
+
+<div class="absher-premium-widget" id="absherPremiumWidget">
+    <div class="absher-premium-header">
+        <div class="absher-header-title">
+            <div class="absher-live-pulse"></div>
+            <span>المستجدات والإعلانات الرسمية</span>
+        </div>
+        <span style="font-size: 12px; opacity: 0.6; font-weight: normal;">أبشر سكاي</span>
+    </div>
+    
+    <div class="absher-premium-body">
+        <div id="absher-premium-text">جاري مزامنة المنصة...</div>
+    </div>
+
+    <div class="absher-premium-footer">
+        <!-- النقاط التفاعلية المضيئة -->
+        <div class="absher-dot-indicators" id="absherDots"></div>
+        <!-- شريط الخمس ثواني الذكي -->
+        <div class="absher-progress-container">
+            <div class="absher-progress-bar" id="absherBar"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // مصفوفة البيانات والأخبار الترويجية المحدثة بناءً على طلبك
+    const premiumPromos = [
+        "<strong>توجيهات إدارية:</strong> بتوجيهات رئيس مجلس الإدارة السيد <strong>جمال جميل شمسان</strong>، نسير بخطى استراتيجية ثابتة لتطوير البنية الرقمية والخدمية للشركة.",
+        "<strong>قريباً وحصرياً:</strong> إطلاق تطبيق <strong>أبشر سكاي لخدمات الصيانة</strong> الأحدث لنظامي <strong>أندرويد و آيفون</strong>، صيانة منشأتك بلمسة زر ذكية واحدة.",
+        "<strong>لأول مرة في عدن:</strong> ترقبوا التدشين الرسمي لأقوى عروض <strong>باقات المكيفات الحصرية</strong>، حلول صيانة دورية متكاملة بأسعار استثنائية.",
+        "<strong>كفاءة واعتمادية:</strong> نلتزم بتقديم حلول صيانة التكييف المتقدمة، الإلكترونيات، والأنظمة التقنية بأعلى المعايير المهنية لضمان راحة بالكم."
+    ];
+
+    let currentPremiumIndex = 0;
+    const textTarget = document.getElementById("absher-premium-text");
+    const dotsContainer = document.getElementById("absherDots");
+    const progressBar = document.getElementById("absherBar");
+    const displayDuration = 5000; // وقت العرض (5 ثوانٍ)
+    let promoInterval;
+
+    // بناء النقاط السفلية ديناميكياً لتطابق حجم الأخبار
+    function buildIndicators() {
+        if(!dotsContainer) return;
+        dotsContainer.innerHTML = "";
+        premiumPromos.forEach((_, idx) => {
+            const dot = document.createElement("div");
+            dot.classList.add("absher-dot");
+            if(idx === 0) dot.classList.add("active");
+            dot.addEventListener("click", () => jumpToPromo(idx));
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    // تحديث حالة النقاط المضيئة
+    function updateIndicators() {
+        const dots = document.querySelectorAll(".absher-dot");
+        dots.forEach((dot, idx) => {
+            if(idx === currentPremiumIndex) {
+                dot.classList.add("active");
+            } else {
+                dot.classList.remove("active");
+            }
+        });
+    }
+
+    // حركة شريط التقدم التنازلي الانسيابي (Linear 5s Animation)
+    function resetProgressBar() {
+        if(!progressBar) return;
+        progressBar.style.transition = 'none';
+        progressBar.style.transform = 'scaleX(1)';
+        
+        progressBar.offsetHeight; 
+        
+        progressBar.style.transition = `transform ${displayDuration}ms linear`;
+        progressBar.style.transform = 'scaleX(0)';
+    }
+
+    // دالة التغيير الأساسية بحركة الـ Slide & Fade
+    function changePremiumPromo() {
+        if (!textTarget) return;
+
+        textTarget.classList.add("fade-out");
+
+        setTimeout(function() {
+            textTarget.innerHTML = premiumPromos[currentPremiumIndex];
+            updateIndicators();
+            resetProgressBar();
+
+            textTarget.classList.remove("fade-out");
+            textTarget.classList.add("fade-in");
+
+            textTarget.offsetHeight;
+            textTarget.classList.remove("fade-in");
+
+            currentPremiumIndex = (currentPremiumIndex + 1) % premiumPromos.length;
+        }, 400);
+    }
+
+    function jumpToPromo(index) {
+        clearInterval(promoInterval);
+        currentPremiumIndex = index;
+        changePremiumPromo();
+        startPromoCycle();
+    }
+
+    function startPromoCycle() {
+        promoInterval = setInterval(changePremiumPromo, displayDuration);
+    }
+
+    // التشغيل المتزامن والذكي فور الانتهاء من تحميل الصفحة
+    document.addEventListener("DOMContentLoaded", () => {
+        buildIndicators();
+        changePremiumPromo();
+        startPromoCycle();
+    });
+</script>
+<!-- ================= نهاية منصة أبشر سكاي الترويجية الاحترافية المتقدمة ================= -->
 </body>
 </html>
