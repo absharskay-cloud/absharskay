@@ -1,510 +1,436 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ابشر سكاي لخدمات الصيانة</title>
-   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابشر سكاي لخدمات الصيانة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #060709;
+            --bg-card: rgba(10, 12, 16, 0.75);
+            --primary-blue: #0071e3;
+            --neon-blue: #00d2ff;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a6;
+        }
 
-   <style>
-      :root {
-         --bg-dark: #060709;
-         --bg-card: rgba(10, 12, 16, 0.75);
-         --primary-blue: #0071e3;
-         --neon-blue: #00d2ff;
-         --text-main: #ffffff;
-         --text-muted: #a1a1a6;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
 
-      * {
-         margin: 0;
-         padding: 0;
-         box-sizing: border-box;
-         font-family: 'Cairo', sans-serif;
-      }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
 
-      body {
-         background-color: var(--bg-dark);
-         color: var(--text-main);
-         overflow-x: hidden;
-      }
+        /* توهج النيون الأزرق الممتد في الخلفية */
+        .neon-glow-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.07) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(0, 113, 227, 0.07) 0%, transparent 50%);
+            z-index: -3;
+            pointer-events: none;
+        }
 
-      /* توهج النيون الأزرق الممتد في الخلفية */
-      .neon-glow-bg {
-         position: fixed;
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         width: 100vw;
-         height: 100vh;
-         background: radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.07) 0%, transparent 50%),
-            radial-gradient(circle at 20% 80%, rgba(0, 113, 227, 0.07) 0%, transparent 50%);
-         z-index: -3;
-         pointer-events: none;
-      }
+        /* الهيدر الثابت الفخم */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 7, 9, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+        }
 
-      /* الهيدر الثابت الفخم */
-      header {
-         position: fixed;
-         top: 0;
-         width: 100%;
-         background: rgba(6, 7, 9, 0.85);
-         backdrop-filter: blur(12px);
-         -webkit-backdrop-filter: blur(12px);
-         z-index: 100;
-         padding: 18px 5%;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         border-bottom: 1px solid rgba(0, 212, 255, 0.08);
-      }
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--text-main);
+            text-decoration: none;
+        }
 
-      .logo {
-         font-size: 26px;
-         font-weight: 900;
-         color: var(--text-main);
-         text-decoration: none;
-      }
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+        }
 
-      .logo span {
-         color: var(--neon-blue);
-         text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-      }
+        .btn-contact {
+            background: linear-gradient(135deg, var(--primary-blue), #004494);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 113, 227, 0.4);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-      .btn-contact {
-         background: linear-gradient(135deg, var(--primary-blue), #004494);
-         color: white;
-         padding: 8px 22px;
-         border-radius: 30px;
-         text-decoration: none;
-         font-weight: 700;
-         box-shadow: 0 0 15px rgba(0, 113, 227, 0.4);
-         transition: 0.3s;
-         display: inline-flex;
-         align-items: center;
-         gap: 8px;
-      }
+        .btn-contact:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
 
-      .btn-contact:hover {
-         transform: scale(1.03);
-         box-shadow: 0 0 25px var(--neon-blue);
-      }
-
-      /* أقسام العرض متناسقة وموزعة لمنع الاختفاء */
-      section {
-         padding: 140px 8% 60px 8%;
-         min-height: 100vh;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         position: relative;
-      }
-
-      .section-content {
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         width: 100%;
-         gap: 40px;
-         z-index: 2;
-      }
-
-      .text-side {
-         flex: 1.2;
-         text-align: right;
-      }
-
-      .image-side {
-         flex: 0.8;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         position: relative;
-      }
-
-      /* تأثير إطار الصورة الفخم المضاء بالنيون الأزرق */
-      .character-img-wrapper {
-         position: relative;
-         width: 100%;
-         max-width: 380px;
-         border-radius: 24px;
-         overflow: hidden;
-         border: 2px solid rgba(0, 210, 255, 0.3);
-         box-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
-         background: #0d0f14;
-         transition: 0.5s;
-      }
-
-      .character-img-wrapper:hover {
-         transform: scale(1.02);
-         border-color: var(--neon-blue);
-         box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
-      }
-
-      .hero-title {
-         font-size: 52px;
-         font-weight: 900;
-         margin-bottom: 25px;
-         line-height: 1.3;
-      }
-
-      .hero-title span {
-         background: linear-gradient(to left, #fff, var(--neon-blue));
-         -webkit-background-clip: text;
-         -webkit-text-fill-color: transparent;
-      }
-
-      .hero-desc {
-         font-size: 19px;
-         color: var(--text-muted);
-         line-height: 1.7;
-         margin-bottom: 30px;
-      }
-
-      /* توزيع الكروت والشبكات للأقسام الداخلية */
-      .services-grid {
-         display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-         gap: 25px;
-         width: 100%;
-         margin-top: 20px;
-      }
-
-      .service-card {
-         background: var(--bg-card);
-         border: 1px solid rgba(0, 212, 255, 0.08);
-         padding: 35px 25px;
-         border-radius: 20px;
-         backdrop-filter: blur(8px);
-         -webkit-backdrop-filter: blur(8px);
-         transition: 0.3s;
-      }
-
-      .service-card:hover {
-         border-color: var(--neon-blue);
-         box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
-         transform: translateY(-5px);
-      }
-
-      .service-card i {
-         font-size: 38px;
-         color: var(--neon-blue);
-         margin-bottom: 15px;
-         text-shadow: 0 0 10px var(--primary-blue);
-      }
-
-      .service-card h3 {
-         font-size: 20px;
-         margin-bottom: 10px;
-      }
-
-      .service-card p {
-         color: var(--text-muted);
-         font-size: 14px;
-         line-height: 1.6;
-      }
-
-      /* الباقات والاشتراكات */
-      .plans-grid {
-         display: flex;
-         flex-wrap: wrap;
-         gap: 30px;
-         justify-content: flex-start;
-         margin-top: 20px;
-         width: 100%;
-      }
-
-      .plan-box {
-         background: var(--bg-card);
-         border: 1px solid rgba(255, 255, 255, 0.04);
-         padding: 35px;
-         border-radius: 20px;
-         width: 310px;
-         backdrop-filter: blur(8px);
-         -webkit-backdrop-filter: blur(8px);
-         position: relative;
-      }
-
-      .plan-box.featured {
-         border-color: var(--neon-blue);
-         box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
-      }
-
-      .plan-box h3 {
-         font-size: 22px;
-         margin-bottom: 10px;
-      }
-
-      .plan-box .price {
-         font-size: 30px;
-         font-weight: 900;
-         color: var(--neon-blue);
-         margin-bottom: 20px;
-      }
-
-      .plan-box ul {
-         list-style: none;
-         text-align: right;
-      }
-
-      .plan-box ul li {
-         padding: 8px 0;
-         color: var(--text-muted);
-         font-size: 14px;
-         border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-      }
-
-      .plan-box ul li i {
-         color: var(--neon-blue);
-         margin-left: 8px;
-      }
-
-      /* تفاصيل الموقع وأوقات الدوام */
-      .info-layout {
-         display: flex;
-         gap: 25px;
-         width: 100%;
-         margin-top: 20px;
-      }
-
-      .info-card {
-         flex: 1;
-         background: var(--bg-card);
-         border: 1px solid rgba(0, 212, 255, 0.08);
-         padding: 30px;
-         border-radius: 20px;
-         backdrop-filter: blur(8px);
-         -webkit-backdrop-filter: blur(8px);
-      }
-
-      .info-card h3 {
-         font-size: 22px;
-         margin-bottom: 15px;
-         display: flex;
-         align-items: center;
-         gap: 10px;
-      }
-
-      .info-card p {
-         font-size: 15px;
-         color: var(--text-muted);
-         line-height: 1.8;
-         margin-bottom: 8px;
-      }
-
-      .info-card p i {
-         color: var(--neon-blue);
-         margin-left: 8px;
-      }
-
-      .badge {
-         background: rgba(0, 114, 227, 0.15);
-         border: 1px solid var(--primary-blue);
-         padding: 4px 10px;
-         border-radius: 6px;
-         display: inline-block;
-         margin-top: 4px;
-         color: #fff;
-         font-size: 13px;
-      }
-
-      /* زر الواتساب العائم */
-      .whatsapp-float {
-         position: fixed;
-         bottom: 25px;
-         left: 25px;
-         background: #25d366;
-         color: white;
-         width: 55px;
-         height: 55px;
-         border-radius: 50%;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         font-size: 28px;
-         box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-         z-index: 999;
-         text-decoration: none;
-      }
-
-      .footer-text {
-         font-size: 13px;
-         color: #444;
-         width: 100%;
-         text-align: center;
-         margin-top: 40px;
-      }
-
-      /* تنسيقات الـ Widget الجانبي لمعالم عدن */
-      .aden-history-widget {
-         position: fixed;
-         top: 95px;
-         left: 25px; /* تم تعديله لليسار ليتوازن بصرياً مع زر الواتساب بالأسفل ويترك لليمين مساحة التصفح */
-         width: 300px;
-         background: var(--bg-card);
-         backdrop-filter: blur(12px);
-         -webkit-backdrop-filter: blur(12px);
-         color: var(--text-main);
-         border-right: 4px solid var(--primary-blue);
-         border-radius: 16px;
-         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-         direction: rtl;
-         text-align: right;
-         padding: 18px;
-         z-index: 99;
-         transition: all 0.3s ease;
-         border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .aden-widget-header {
-         display: flex;
-         align-items: center;
-         font-weight: bold;
-         font-size: 15px;
-         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-         padding-bottom: 10px;
-         margin-bottom: 12px;
-         color: var(--neon-blue);
-      }
-
-      .aden-widget-header i {
-         margin-left: 8px;
-         color: var(--neon-blue);
-      }
-
-      #aden-monument-text {
-         font-size: 14px;
-         line-height: 1.7;
-         color: var(--text-muted);
-         min-height: 50px;
-         transition: opacity 0.5s ease-in-out;
-         opacity: 1;
-      }
-
-      #aden-monument-text.fade-hidden {
-         opacity: 0;
-      }
-
-      /* التوافق التام مع الجوال وتغيير التوزيع */
-      @media (max-width: 992px) {
-         .section-content {
-            flex-direction: column;
-            text-align: center;
-         }
-
-         .text-side {
-            text-align: center;
-         }
-
-         .image-side {
-            order: -1;
-            margin-bottom: 20px;
-         }
-
-         .hero-title {
-            font-size: 34px;
-         }
-
-         .info-layout {
-            flex-direction: column;
-         }
-
-         .plans-grid {
+        /* أقسام العرض متناسقة وموزعة لمنع الاختفاء */
+        section {
+            padding: 140px 8% 60px 8%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             justify-content: center;
-         }
+            position: relative;
+        }
 
-         /* إخفاء الـ Widget في الجوالات الصغيرة لضمان تجربة مستخدم مريحة وعدم حجب المحتوى */
-         .aden-history-widget {
-            display: none;
-         }
-      }
-   </style>
+        .section-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 40px;
+            z-index: 2;
+        }
+
+        .text-side {
+            flex: 1.2;
+            text-align: right;
+        }
+
+        .image-side {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* تأثير إطار الصورة الفخم المضاء بالنيون الأزرق */
+        .character-img-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
+            background: #0d0f14;
+            transition: 0.5s;
+        }
+
+        .character-img-wrapper:hover {
+            transform: scale(1.02);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to left, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 19px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* توزيع الكروت والشبكات للأقسام الداخلية */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.08);
+            padding: 35px 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 38px;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--primary-blue);
+        }
+
+        .service-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .service-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+
+        /* الباقات والاشتراكات */
+        .plans-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: flex-start;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .plan-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 35px;
+            border-radius: 20px;
+            width: 310px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+        }
+
+        .plan-box.featured {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .plan-box h3 { font-size: 22px; margin-bottom: 10px; }
+        .plan-box .price { font-size: 30px; font-weight: 900; color: var(--neon-blue); margin-bottom: 20px; }
+        .plan-box ul { list-style: none; text-align: right; }
+        .plan-box ul li { padding: 8px 0; color: var(--text-muted); font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .plan-box ul li i { color: var(--neon-blue); margin-left: 8px; }
+
+        /* تفاصيل الموقع وأوقات الدوام */
+        .info-layout {
+            display: flex;
+            gap: 25px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.08);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .info-card h3 { font-size: 22px; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .info-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 8px; }
+        .info-card p i { color: var(--neon-blue); margin-left: 8px; }
+
+        .badge {
+            background: rgba(0, 114, 227, 0.15);
+            border: 1px solid var(--primary-blue);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 4px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        /* زر الواتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #25d366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .footer-text { font-size: 13px; color: #444; width: 100%; text-align: center; margin-top: 40px; }
+
+        /* التوافق التام مع الجوال وتغيير التوزيع */
+        @media (max-width: 992px) {
+            .section-content { flex-direction: column; text-align: center; }
+            .text-side { text-align: center; }
+            .image-side { order: -1; margin-bottom: 20px; }
+            .hero-title { font-size: 34px; }
+            .info-layout { flex-direction: column; }
+            .plans-grid { justify-content: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-   <div class="neon-glow-bg"></div>
+    <div class="neon-glow-bg"></div>
 
-   <a href="https://wa.me/967781159204?text=مرحباً%20ابشر%20سكاي" class="whatsapp-float" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i>
-   </a>
+    <a href="https://wa.me/967781159204?text=مرحباً%20ابشر%20سكاي" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-   <header>
-      <a href="#" class="logo">ابشر<span>سكاي</span></a>
-      <a href="https://wa.me/967781159204?text=مرحباً%20طلب%20صيانة" class="btn-contact" target="_blank">
-         <i class="fa-brands fa-whatsapp"></i> خدمة العملاء
-      </a>
-   </header>
+    <header>
+        <a href="#" class="logo">ابشر<span>سكاي</span></a>
+        <a href="https://wa.me/967781159204?text=مرحباً%20طلب%20صيانة" class="btn-contact" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> خدمة العملاء
+        </a>
+    </header>
 
-   <section>
-      <div class="section-content">
-         <div class="text-side">
-            <h1 class="hero-title">رؤية جديدة في عالم<br><span>صيانة المنشآت الذكية</span></h1>
-            <p class="hero-desc">في ابشر سكاي، ندمج التقنية بالخبرة لنمنح منزلك أو منشأتك الرعاية المثالية التي تستحقها وبأعلى معايير الأمان الإحترافية المستوحاة من الدقة والقوة.</p>
-         </div>
-         <div class="image-side">
-            <div class="character-img-wrapper">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" width="100%" height="100%" style="display:block;">
-                  <defs>
-                     <filter id="batman-neon" x="-30%" y="-30%" width="160%" height="160%">
-                        <feGaussianBlur stdDeviation="8" result="blur" />
-                        <feMerge>
-                           <feMergeNode in="blur" />
-                           <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                     </filter>
-                  </defs>
-                  <g transform="translate(20, 10)">
-                     <path d="M120 380 Q105 260 135 150 L140 30 L170 95 H205 L235 30 L240 150 Q270 260 255 380 Z" fill="#0b0d13" />
-                     <path d="M135 150 L140 30 L170 95 H205 L235 30 L240 150" fill="none" stroke="#00d2ff" stroke-width="2.5" filter="url(#batman-neon)" stroke-linecap="round" />
-                     <path d="M240 150 Q268 250 255 360" fill="none" stroke="#0071e3" stroke-width="2" opacity="0.8" />
-                     <path d="M160 142 L172 145 L162 149 Z" fill="#00d2ff" filter="url(#batman-neon)" />
-                     <path d="M215 142 L203 145 L213 149 Z" fill="#00d2ff" filter="url(#batman-neon)" />
-                  </g>
-               </svg>
+    <section>
+        <div class="section-content">
+            <div class="text-side">
+                <h1 class="hero-title">رؤية جديدة في عالم<br><span>صيانة المنشآت الذكية</span></h1>
+                <p class="hero-desc">في ابشر سكاي، ندمج التقنية بالخبرة لنمنح منزلك أو منشأتك الرعاية المثالية التي تستحقها وبأعلى معايير الأمان الإحترافية المستوحاة من الدقة والقوة.</p>
             </div>
-         </div>
-      </div>
-   </section>
-
-   <section>
-      <div class="section-content">
-         <div class="text-side">
-            <h2 class="hero-title" style="font-size: 38px;">منظومة <span>خدماتنا المتكاملة</span></h2>
-            <div class="services-grid">
-               <div class="service-card">
-                  <i class="fa-solid fa-snowflake"></i>
-                  <h3>التكييف والتبريد</h3>
-                  <p>غسيل، صيانة دورية، وإصلاح فوري لكافة الأنظمة لضمان تبريد مثالي.</p>
-               </div>
-               <div class="service-card">
-                  <i class="fa-solid fa-bolt-lightning"></i>
-                  <h3>الأنظمة الكهربائية</h3>
-                  <p>حلول الفحص الذكي وتأسيس الشبكات ومعالجة الأحمال بدقة عالية.</p>
-               </div>
-               <div class="service-card">
-                  <i class="fa-solid fa-droplet"></i>
-                  <h3>السباكة والعزل</h3>
-                  <p>كشف تسربات المياه بأحدث الأجهزة وإصلاح شبكات التغذية باحترافية.</p>
-               </div>
+            <div class="image-side">
+                <div class="character-img-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" width="100%" height="100%" style="display:block;">
+                      <defs>
+                        <filter id="batman-neon" x="-30%" y="-30%" width="160%" height="160%">
+                          <feGaussianBlur stdDeviation="8" result="blur" />
+                          <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <g transform="translate(20, 10)">
+                        <path d="M120 380 Q105 260 135 150 L140 30 L170 95 H205 L235 30 L240 150 Q270 260 255 380 Z" fill="#0b0d13"/>
+                        <path d="M135 150 L140 30 L170 95 H205 L235 30 L240 150" fill="none" stroke="#00d2ff" stroke-width="2.5" filter="url(#batman-neon)" stroke-linecap="round"/>
+                        <path d="M240 150 Q268 250 255 360" fill="none" stroke="#0071e3" stroke-width="2" opacity="0.8"/>
+                        <path d="M160 142 L172 145 L162 149 Z" fill="#00d2ff" filter="url(#batman-neon)"/>
+                        <path d="M215 142 L203 145 L213 149 Z" fill="#00d2ff" filter="url(#batman-neon)"/>
+                      </g>
+                    </svg>
+                </div>
             </div>
-         </div>
-         <div class="image-side">
-            <div class="character-img-wrapper" style="border-color: rgba(0, 113, 227, 0.4);">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" width="100%" height="100%" style="display:block;">
-                  <defs>
-                     <filter id="cat-neon" x="-30%" y="-30%" width="160%" height="160%">
-                        <feGaussianBlur stdDeviation="7" result="blur" />
-                        <feMerge>
-                           <feMergeNode in="blur" />
-                           <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                     </filter>
-                  </defs>
-                  <g transform="translate(40, 20)">
-                     <path d="M70 390 C65 310 95 240 115 170 L110 50 L145 125 H175 L200 50 L205 150 C220 230 240 310 230 390 C180 400 120 400 70 390 Z" fill="#080a0f" />
-                     <path d="M115 170 L110 50 L145 125 H175 L200 50 L205 160" fill="none" stroke="#00d2ff" stroke-width="2.5" filter="url(#cat-neon)" stroke-linecap="round" />
-                     <path d="M125 185 Q140 170 150 190 Q135 195 125 185 Z" fill="none" stroke="#00d2ff" stroke-width="1.5" filter="url(#cat-neon)"
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content">
+            <div class="text-side">
+                <h2 class="hero-title" style="font-size: 38px;">منظومة <span>خدماتنا المتكاملة</span></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fa-solid fa-snowflake"></i>
+                        <h3>التكييف والتبريد</h3>
+                        <p>غسيل، صيانة دورية، وإصلاح فوري لكافة الأنظمة لضمان تبريد مثالي.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                        <h3>الأنظمة الكهربائية</h3>
+                        <p>حلول الفحص الذكي وتأسيس الشبكات ومعالجة الأحمال بدقة عالية.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h3>السباكة والعزل</h3>
+                        <p>كشف تسربات المياه بأحدث الأجهزة وإصلاح شبكات التغذية باحترافية.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="image-side">
+                <div class="character-img-wrapper" style="border-color: rgba(0, 113, 227, 0.4);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" width="100%" height="100%" style="display:block;">
+                      <defs>
+                        <filter id="cat-neon" x="-30%" y="-30%" width="160%" height="160%">
+                          <feGaussianBlur stdDeviation="7" result="blur" />
+                          <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <g transform="translate(40, 20)">
+                        <path d="M70 390 C65 310 95 240 115 170 L110 50 L145 125 H175 L200 50 L205 150 C220 230 240 310 230 390 C180 400 120 400 70 390 Z" fill="#080a0f"/>
+                        <path d="M115 170 L110 50 L145 125 H175 L200 50 L205 160" fill="none" stroke="#00d2ff" stroke-width="2.5" filter="url(#cat-neon)" stroke-linecap="round"/>
+                        <path d="M125 185 Q140 170 150 190 Q135 195 125 185 Z" fill="none" stroke="#00d2ff" stroke-width="1.5" filter="url(#cat-neon)"/>
+                        <path d="M132 182 Q140 176 144 186 Z" fill="#00d2ff" filter="url(#cat-neon)"/>
+                        <path d="M205 160 C222 240 232 320 225 380" fill="none" stroke="#0071e3" stroke-width="2" opacity="0.7"/>
+                      </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-content" style="flex-direction: column; align-items: flex-start;">
+            <h2 class="hero-title" style="font-size: 38px;">باقات <span>الاشتراك السنوي الذكي</span></h2>
+            <div class="plans-grid">
+                <div class="plan-box">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="price">خطة اقتصادية</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> 4 زيارات صيانة وقائية مجدولة</li>
+                        <li><i class="fa-solid fa-check"></i> فحص شامل لشبكات الكهرباء والسباكة</li>
+                        <li><i class="fa-solid fa-check"></i> دعم فني واستشارات مجانية عبر الهاتف</li>
+                    </ul>
+                </div>
+                <div class="plan-box featured">
+                    <h3>الباقة المتقدمة</h3>
+                    <div class="price">تغطية بريميوم</div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> زيارات صيانة طارئة ودورية غير محدودة</li>
+                        <li><i class="fa-solid fa-check"></i> غسيل وصيانة أجهزة التكييف بالكامل</li>
+                        <li><i class="fa-solid fa-check"></i> أولوية مطلقة في الاستجابة للطوارئ 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="min-height: auto; padding-bottom: 30px;">
+        <div class="section-content" style="flex-direction: column;">
+            <h2 class="hero-title" style="font-size: 36px; margin-bottom: 15px;">تواصل <span>معنا الآن</span></h2>
+            <div class="info-layout">
+                <div class="info-card" style="text-align: right;">
+                    <h3><i class="fa-solid fa-map-location-dot" style="color:var(--neon-blue);"></i> العنوان والموقع</h3>
+                    <p><i class="fa-solid fa-location-dot"></i> عدن - مديرية المعلا - خلف مطعم حلب</p>
+                    <p><i class="fa-solid fa-building"></i> بجانب مداد للطباعة الإعلانية</p>
+                </div>
+                <div class="info-card" style="text-align: right;">
+                    <h3><i class="fa-solid fa-clock" style="color:var(--neon-blue);"></i> مواعيد العمل الرسمية</h3>
+                    <p><i class="fa-solid fa-sun"></i> <strong>الفترة الصباحية:</strong> <span class="badge">8:00 ص إلى 12:00 ظهراً</span></p>
+                    <p><i class="fa-solid fa-moon"></i> <strong>الفترة المسائية:</strong> <span class="badge">4:00 م إلى 8:00 مساءً</span></p>
+                </div>
+            </div>
+            <div class="footer-text">© 2026 ابشر سكاي لخدمات الصيانة. جميع الحقوق محفوظة.</div>
+        </div>
+    </section>
+
+</body>
 </html>
