@@ -561,37 +561,6 @@
 
 <div class="aden-history-widget" id="adenWidget">
     <div class="aden-widget-header">
-        <span class="aden-icon-spin">⚓</span>
-        <span>من معالم وتاريخ عدن</span>
-    </div>
-    <div id="aden-monument-text">جاري تحميل العمارة والتاريخ...</div>
-</div>
-
-<script>
-    const adenMonuments = [
-        "<strong>صهاريج عدن:</strong> معجزة هندسية فريدة في قلب كريتر، شُيدت لتلقي وحفظ مياه الأمطار عبر وديان جبل شمسان وتعود لقرون طويلة قبل الميلاد.",
-        "<strong>قلعة صيرة:</strong> الحصن الدفاعي التاريخي الشامخ فوق جزيرة صيرة، والذي وقف حارساً لثغر عدن الباسم وصد هجمات الغزاة عبر العصور.",
-        "<strong>منارة عدن:</strong> مَعلَم معمارى أثري بارز يُعتقد أنها مئذنة لجامع قديم تهدم، وتتميز بتصميمها المثمن الذي يعكس عراقة العمارة الإسلامية.",
-        "<strong>ساعة بيغ بن عدن:</strong> بُنيت في التواهي عام 1890 لتكون شبيهة بساعة لندن الشهيرة، وتعتبر من أقدم الساعات التاريخية في المنطقة.",
-        "<strong>ميناء التواهي:</strong> تمتلك عدن واحداً من أفضل الموانئ الطبيعية في العالم، وشواطئ ساحرة تروي قصة المدينة كملتقى للتجارة العالمية."
-    ];
-
-    let adenIndex = 0;
-    const textElement = document.getElementById("aden-monument-text");
-
-    function rotateAdenHistory() {
-        textElement.style.opacity = 0;
-        setTimeout(function() {
-            textElement.innerHTML = adenMonuments[adenIndex];
-            textElement.style.opacity = 1;
-            adenIndex = (adenIndex + 1) % adenMonuments.length;
-        }, 500);
-    }
-
-    rotateAdenHistory();
-    setInterval(rotateAdenHistory, 8000);
-</script>
-<!-- ================= نهاية قسم معالم عدن المتناسق مع هويتك ================= -->
-</body>
+       
 
 </html>
