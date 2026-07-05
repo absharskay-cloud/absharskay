@@ -1,0 +1,1 @@
+<img src="logo.png" alt="شعار ذكاء النسور" className="w-full h-full object-cover" />
